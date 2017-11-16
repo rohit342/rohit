@@ -2,34 +2,34 @@
 <head>
   <title>form</title></head>
   <link href="style.css"  rel="stylesheet" type="text/css">
-  <script>
-  function myfunction()
-    {
-    var a=document.getElementById("fname").value;
-      if(a=="")
-         {
-         alert("enter the first name");
-      retuern false;
-         }
-     var b=document.getElementById("lname").value;
-      if(b=="")
-         {
-         alert("enter the last name");
-      retuern false;
-         }
-         var c=document.getElementById("father").value;
-      if(c=="")
-         {
-         alert("enter the father name");
-      retuern false;
-         }
-         var d=document.getElementById("mother").value;
-      if(d=="")
-         {
-         alert("enter the mother name");
-      retuern false;
-         }
-    }
+   <script>
+  function my()
+{
+var a=document.getElementById("fname").value;
+if (a == "")
+{
+alert("enter the value of name because this empty");
+return false;
+}
+  var b=document.getElementById("lname").value;
+  if(b=="")
+  {
+    alert("enter the value of name because this empty");
+    return false;
+  }
+  var c=document.getElementById("faname").value;
+if (c == "")
+{
+alert("enter the value of name because this empty");
+return false;
+}
+  var d=document.getElementById("moname").value;
+  if(d=="")
+  {
+    alert("enter the value of name because this empty");
+    return false;
+  }
+}
   </script>
 <body>
 <form action="" method="post" onsubmit="return myfunction()" name="form1">
@@ -41,9 +41,9 @@
      <td> <input type="text" name="lname" id="lname" placeholder="Second Name"></td></tr>
     <tr>
       <td>father's name</td>
-      <td><input type="text" name="father's name" id="father" placeholder="Father's Name"></td></tr>
+      <td><input type="text" name="faname" id="faname" placeholder="Father's Name"></td></tr>
     <tr><td>mother's name</td>
-      <td><input type="text" name="mother's name" id="mother" placeholder="Mothr's Name">
+      <td><input type="text" name="moname" id="moname" placeholder="Mothr's Name">
       </td></tr>
     <tr><td> <input type="submit" value="submit"></td>
       <td> <input type="reset" value="reset"></td></tr>
