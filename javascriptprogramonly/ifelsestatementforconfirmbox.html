@@ -1,0 +1,20 @@
+<body>
+<div id="confirm"></div>
+<button onclick="demo()">confirmbox</button>
+<script>
+function demo()
+{
+var a;
+if(confirm("pressed ok")==true)
+{
+a="enetr the ok button";
+}
+else
+{
+a="eneter the cancel button";
+}
+document.getElementById("confirm").innerHTML=a;
+window.print();
+}
+</script>
+
