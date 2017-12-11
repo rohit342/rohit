@@ -1,0 +1,12 @@
+<select id="demo" onchange="select()">
+<option>select</option>
+<option>firefox</option>
+</select>
+<input type="text" id="demo1"/>
+<script>
+<function select()
+{
+var demo=document.getElementById("demo");
+document.getElementById("demo1").value=demo.options[demo.selectedIndex].text;
+}
+</script>
