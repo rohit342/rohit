@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+table{ text-align:center; border:solid 7px;}
+th{ font-size:20px; border:solid;}
+td{ font-size:14px; border-right:solid 1px red;}
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #000000;
+}
+
+</style>
+<body>
+<script language="javascript">
+function AddRecords(n)
+{
+var fnames,lnames,emails,phone,d_o_b,user_name,passwords;
+	fnames=document.getElementById("txtfname").value;
+	lnames=document.getElementById("txtlname").value;
+	emails=document.getElementById("txtemail").value;
+	phone=document.getElementById("txtphone").value;
+	d_o_b=document.getElementById("txtdd").value;
+	d_o_bnn=document.getElementById("txtnn").value;
+	d_o_byy=document.getElementById("txtyy").value;
+	user_name=document.getElementById("txtuname").value;
+	passwords=document.getElementById("txtpass").value;
+	var tbl=document.getElementById("tblstud");
+	var n=tbl.rows.length;
+	
+	
+	var row=tbl.insertRow(n);
+	var cell0=row.insertCell(0);
+	cell0.innerHTML= "<input type='checkbox' />";
+	var cell1=row.insertCell(1);
+	cell1.innerHTML=n;
+	var cell2=row.insertCell(2);
+	cell2.innerHTML=100+n;
+
+	var cell3=row.insertCell(3);
+	cell3.innerHTML=fnames;
+	var cell4=row.insertCell(4);
+	cell4.innerHTML=lnames;
+	var cell5=row.insertCell(5);
+	cell5.innerHTML=emails;
+	var cell6=row.insertCell(6);
+	cell6.innerHTML=phone;
+	var cell7=row.insertCell(7);
+	cell7.innerHTML=d_o_b;
+	var cell8=row.insertCell(8);
+	cell8.innerHTML=d_o_bnn;
+	var cell9=row.insertCell(9);
+	cell9.innerHTML=d_o_byy;
+	var cell10=row.insertCell(10);
+	cell10.innerHTML=user_name;
+	var cell11=row.insertCell(11);
+	cell11.innerHTML=passwords;
+
+
+}
+function CheckedUnChecked(chk)
+{
+	var n=document.form1.length;
+	var i;
+	for(i=0;i<n;i++)
+	{
+		var ctr=document.form1.elements[i];
+		if(ctr.type=="checkbox")
+		 ctr.checked=chk;
+	}
+}
+
+
+</script>
+
+<form id="regForm" name="regForm"> 
+  <h1>Register:</h1>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">Name:
+    <p><input placeholder="First name..." oninput="this.className = ''" name="fname" id="txtfname"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname" id="txtlname"></p>
+  </div>
+  <div class="tab">Contact Info:
+    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email" id="txtemail"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone" id="txtphone"></p>
+  </div>
+  <div class="tab">Birthday:
+    <p><input placeholder="dd" oninput="this.className = ''" name="dd" id="txtdd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn" id="txtnn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy" id="txtyy"></p>
+  </div>
+  <div class="tab">Login Info:
+    <p><input placeholder="Username..." oninput="this.className = ''" name="uname" id="txtuname"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password" id="txtpass"></p>
+  </div>
+  
+  <div style="overflow:auto;">
+    <div style="float:right;">
+	
+      <button type="button" id="prevBtn" onClick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onClick="nextPrev(1)">Next</button>
+	  <button type="button" id="addrecords" onClick="AddRecords(2)"> View Record</button>
+
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+
+</form>
+<form name="form1" id="form1">
+<table  width="100%"  border="0" id="tblstud">
+<tr>
+<th><input type="checkbox"  onclick="CheckedUnChecked(this.checked)" /></th>
+<th>Sr.No</th>
+<th>Rollno</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>Phone</th>
+
+<th colspan="3" border="0">date of Birth</th>
+<th>User Name</th>
+<th>Password</th>
+</tr>
+</table>
+</td>
+</tr>
+</table>  
+
+</form>
+
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } 
+  else  {
+   document.getElementById("nextBtn").innerHTML = "Next ";
+  }
+   if (n == 0) {
+    document.getElementById("addrecords").style.display = "none";
+  } 
+  else  {
+    document.getElementById("addrecords").style.display = "inline";
+  }
+    
+  
+  
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").Submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function addrecords(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").addrecords();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+</body>
+</html>
+
