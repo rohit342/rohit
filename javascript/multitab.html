@@ -6,11 +6,9 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #f1f1f1;
 }
-
 #regForm {
   background-color: #ffffff;
   margin: 100px auto;
@@ -19,11 +17,9 @@ body {
   width: 70%;
   min-width: 300px;
 }
-
 h1 {
   text-align: center;  
 }
-
 input {
   padding: 10px;
   width: 100%;
@@ -31,17 +27,14 @@ input {
   font-family: Raleway;
   border: 1px solid #aaaaaa;
 }
-
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
   background-color: #ffdddd;
 }
-
 /* Hide all steps by default: */
 .tab {
   display: none;
 }
-
 button {
   background-color: #4CAF50;
   color: #ffffff;
@@ -51,15 +44,12 @@ button {
   font-family: Raleway;
   cursor: pointer;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 #prevBtn {
   background-color: #bbbbbb;
 }
-
 /* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
@@ -77,17 +67,22 @@ td{ font-size:14px; border-right:solid 1px red;}
 .step.active {
   opacity: 1;
 }
-
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #000000;
 }
-
 </style>
 <body>
 <script language="javascript">
 function AddRecords(n)
 {
+var x=document.forms["regForm"]["txtemail"].value;
+if(x=="")
+{
+alert("Email must be filled out");
+}
+else{
+
 var fnames,lnames,emails,phone,d_o_b,user_name,passwords;
 	fnames=document.getElementById("txtfname").value;
 	lnames=document.getElementById("txtlname").value;
@@ -109,7 +104,6 @@ var fnames,lnames,emails,phone,d_o_b,user_name,passwords;
 	cell1.innerHTML=n;
 	var cell2=row.insertCell(2);
 	cell2.innerHTML=100+n;
-
 	var cell3=row.insertCell(3);
 	cell3.innerHTML=fnames;
 	var cell4=row.insertCell(4);
@@ -128,8 +122,7 @@ var fnames,lnames,emails,phone,d_o_b,user_name,passwords;
 	cell10.innerHTML=user_name;
 	var cell11=row.insertCell(11);
 	cell11.innerHTML=passwords;
-
-
+}
 }
 function CheckedUnChecked(chk)
 {
@@ -142,8 +135,6 @@ function CheckedUnChecked(chk)
 		 ctr.checked=chk;
 	}
 }
-
-
 </script>
 
 <form id="regForm" name="regForm"> 
@@ -211,7 +202,6 @@ function CheckedUnChecked(chk)
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the crurrent tab
-
 function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
@@ -240,7 +230,6 @@ function showTab(n) {
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
 }
-
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -259,27 +248,6 @@ function nextPrev(n) {
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
-
-function addrecords(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").addrecords();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -301,7 +269,6 @@ function validateForm() {
   }
   return valid; // return the valid status
 }
-
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
@@ -314,4 +281,3 @@ function fixStepIndicator(n) {
 </script>
 </body>
 </html>
-
